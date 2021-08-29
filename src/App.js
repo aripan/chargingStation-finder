@@ -13,7 +13,7 @@ function App() {
   const [distance, setDistance] = useState("100");
   const [connectionTypeId, setConnectionTypeId] = useState(["25", "33", "2"]);
 
-  const [chargingPoints, setChargingPoints] = useState(null);
+  const [chargingStations, setChargingStations] = useState(null);
 
   useEffect(() => {
     getMyLocation(setCurrentLocation);
@@ -22,7 +22,7 @@ function App() {
 
       fetch(URL)
         .then((res) => res.json())
-        .then((data) => setData(data, setChargingPoints));
+        .then((data) => setData(data, setChargingStations));
     }
   }, [
     currentLocation.latitude,
@@ -40,7 +40,7 @@ function App() {
         connectionTypeId={connectionTypeId}
         setConnectionTypeId={setConnectionTypeId}
       />
-      <ReactMap chargingPoints={chargingPoints} />
+      <ReactMap chargingStations={chargingStations} />
     </div>
   );
 }

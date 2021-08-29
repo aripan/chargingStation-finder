@@ -32,6 +32,7 @@ export const setData = (data, setterFunc) => {
         : "Not Available",
       priceInfo: item.usageCost ? item.usageCost : "Not Available",
       connectors: item.connections,
+      
       available: item.statusType.isUserSelectable,
     };
     return points.push(chargingStation);

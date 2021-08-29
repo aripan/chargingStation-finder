@@ -1,0 +1,35 @@
+.container {
+  margin-top: 2rem;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem;
+}
+
+.header-top-items {
+  border: 1px solid black;
+  padding: 0.5rem;
+  height: 30px;
+}
+
+.header-top-items span {
+  margin: 0.5rem;
+}
+
+.header-bottom {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.header-bottom input {
+  margin: 0 0.5rem;
+  padding: 0.2rem;
+  text-align: left;
+}
+
+.connectors {
+  margin: 0 1rem;
+}

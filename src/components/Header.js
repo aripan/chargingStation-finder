@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "./Styles.module.css";
 
 const Header = ({ setDistance, connectionTypeId, setConnectionTypeId }) => {
   const [checkedState, setCheckedState] = useState(true);
@@ -44,40 +45,53 @@ const Header = ({ setDistance, connectionTypeId, setConnectionTypeId }) => {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="max distance in km"
-        onChange={(e) => setDistance(e.target.value)}
-      />
-      <span>Connector types</span>
+      <div className={styles["header-top"]}>
+        <h3>ChargingStations finder</h3>
+      <div className={styles["header-top-items"]}>
+        <span>Impress</span>
+        <span>Privacy</span>
+      </div>
+      </div>
+      <div className={styles["header-bottom"]}>
+        <input
+          type="text"
+          placeholder="max distance in km"
+          onChange={(e) => setDistance(e.target.value)}
+        />
+        <div className={styles.connectors}>
+        <span>Connector types</span>
 
-      <label>
-        <input
-          type="checkbox"
-          value="25"
-          onChange={handleToggle}
-          defaultChecked={checkedState}
-        />{" "}
-        <span>Type2</span>
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          value="33"
-          onChange={handleToggle}
-          defaultChecked={checkedState}
-        />{" "}
-        <span>CCS</span>
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          value="2"
-          onChange={handleToggle}
-          defaultChecked={checkedState}
-        />{" "}
-        <span>CHAdeMO</span>
-      </label>
+          <label>
+            <input
+              type="checkbox"
+              value="25"
+              onChange={handleToggle}
+              defaultChecked={checkedState}
+            />{" "}
+            <span>Type2</span>
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              value="33"
+              onChange={handleToggle}
+              defaultChecked={checkedState}
+            />{" "}
+            <span>CCS</span>
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              value="2"
+              onChange={handleToggle}
+              defaultChecked={checkedState}
+            />{" "}
+            <span>CHAdeMO</span>
+          </label>
+        </div>
+        
+      </div>
+      
     </div>
   );
 };
