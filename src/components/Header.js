@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const Header = () => {
+
+const Header = ({distance, setDistance}) => {
+
+ 
+   
     return (
         <div>
-            <h1>HEADER HERE</h1>
+            <input type="text" placeholder="max distance in km"  onChange={e=>setDistance(e.target.value)}/>
         </div>
     )
 }
