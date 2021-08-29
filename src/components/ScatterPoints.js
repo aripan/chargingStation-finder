@@ -1,6 +1,7 @@
 import React from "react";
 import { Scatter } from "react-chartjs-2";
 import { scatterPointsData } from "./ImportantFunctions";
+import Popup from "./Popup";
 
 const options = {
   scales: {
@@ -29,9 +30,20 @@ const ScatterPoints = ({ chargingPoints }) => {
       },
     ],
   };
+
+  const handleClick = (e) => {
+    console.log(e);
+  };
   return (
     <div>
-      <Scatter data={data} options={options} />
+      <Popup />
+      <div
+        onClick={(e) => {
+          handleClick(e);
+        }}
+      >
+        <Scatter data={data} options={options} />
+      </div>
     </div>
   );
 };
