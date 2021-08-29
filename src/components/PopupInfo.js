@@ -1,9 +1,15 @@
 import React from "react";
+import { calculateDistance } from "./ImportantFunctions";
 import styles from "./PopupInfo.module.css";
 
-const PopupInfo = ({selectedStation}) => {
-  console.log(selectedStation)
-  
+const PopupInfo = ({ selectedStation, currentLocation }) => {
+  console.log(currentLocation);
+  let distanceInKm = calculateDistance(
+    selectedStation.location.lat,
+    selectedStation.location.lon,
+    currentLocation.latitude,
+    currentLocation.longitude
+  );
   return (
     <div className={styles.container}>
       <div className={styles.address}>
@@ -24,12 +30,13 @@ const PopupInfo = ({selectedStation}) => {
           <br />
           <span>Longitude</span> {selectedStation.location.lon}
           <br />
-          <span>Distance</span> 15km
+          <span>Distance</span> {distanceInKm.toFixed(2)}
         </div>
       </div>
 
       <div className={styles.status}>
-        <span>status:</span> {selectedStation.available?'available':"occupied"}
+        <span>status:</span>{" "}
+        {selectedStation.available ? "available" : "occupied"}
       </div>
 
       <div>
@@ -41,14 +48,13 @@ const PopupInfo = ({selectedStation}) => {
               <th>plug type</th>
               <th>max power</th>
             </tr>
-            {selectedStation.connectors.map((connector, id)=>(
+            {selectedStation.connectors.map((connector, id) => (
               <tr key={id}>
-              <td>{connector.connectionType.id} </td>
-              <td>{connector.connectionType.title}</td>
-              <td>{connector.powerKW}</td>
-            </tr>
+                <td>{connector.connectionType.id} </td>
+                <td>{connector.connectionType.title}</td>
+                <td>{connector.powerKW}</td>
+              </tr>
             ))}
-            
           </tbody>
         </table>
       </div>

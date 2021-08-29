@@ -4,7 +4,6 @@ import { getMyLocation, setData } from "./components/ImportantFunctions";
 import ReactMap from "./components/ReactMap";
 
 function App() {
-
   const [currentLocation, setCurrentLocation] = useState({
     latitude: "",
     longitude: "",
@@ -18,7 +17,7 @@ function App() {
   useEffect(() => {
     getMyLocation(setCurrentLocation);
     if (currentLocation.latitude && currentLocation.longitude) {
-      let URL = `https://api.openchargemap.io/v3/poi/?key=1c9c76fa-f034-4cdb-bbb7-64dea9dd3c73&output=json&camelcase=true&distance=${distance}&distanceunit=KM&connectiontypeid=${connectionTypeId}&latitude=${currentLocation.latitude}&longitude=${currentLocation.longitude}`;
+      let URL = `https://api.openchargemap.io/v3/poi/?key=${process.env.REACT_APP_OCM_API_KEY}&output=json&camelcase=true&distance=${distance}&distanceunit=KM&connectiontypeid=${connectionTypeId}&latitude=${currentLocation.latitude}&longitude=${currentLocation.longitude}`;
 
       fetch(URL)
         .then((res) => res.json())
@@ -32,15 +31,16 @@ function App() {
   ]);
 
   return (
-    <div >
-     
-      
+    <div>
       <Header
         setDistance={setDistance}
         connectionTypeId={connectionTypeId}
         setConnectionTypeId={setConnectionTypeId}
       />
-      <ReactMap chargingStations={chargingStations} />
+      <ReactMap
+        chargingStations={chargingStations}
+        currentLocation={currentLocation}
+      />
     </div>
   );
 }

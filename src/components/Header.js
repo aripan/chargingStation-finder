@@ -47,10 +47,10 @@ const Header = ({ setDistance, connectionTypeId, setConnectionTypeId }) => {
     <div>
       <div className={styles["header-top"]}>
         <h3>ChargingStations finder</h3>
-      <div className={styles["header-top-items"]}>
-        <span>Impress</span>
-        <span>Privacy</span>
-      </div>
+        <div className={styles["header-top-items"]}>
+          <span>Impress</span>
+          <span>Privacy</span>
+        </div>
       </div>
       <div className={styles["header-bottom"]}>
         <input
@@ -59,7 +59,7 @@ const Header = ({ setDistance, connectionTypeId, setConnectionTypeId }) => {
           onChange={(e) => setDistance(e.target.value)}
         />
         <div className={styles.connectors}>
-        <span>Connector types</span>
+          <span>Connector types</span>
 
           <label>
             <input
@@ -89,9 +89,7 @@ const Header = ({ setDistance, connectionTypeId, setConnectionTypeId }) => {
             <span>CHAdeMO</span>
           </label>
         </div>
-        
       </div>
-      
     </div>
   );
 };

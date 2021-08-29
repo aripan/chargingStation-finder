@@ -32,23 +32,31 @@ export const setData = (data, setterFunc) => {
         : "Not Available",
       priceInfo: item.usageCost ? item.usageCost : "Not Available",
       connectors: item.connections,
-      
+
       available: item.statusType.isUserSelectable,
     };
     return points.push(chargingStation);
   });
-
   setterFunc(points);
 };
 
-// extracting latitude & longitude
-export const scatterPointsData = (data) => {
-  let pointsSet = [];
-  data.map((item) => {
-    const points = { x: item.location.lat, y: item.location.lon };
-
-    return pointsSet.push(points);
-  });
-
-  return pointsSet;
+// calculating distance using latitude & longitude
+export const calculateDistance = (lat1, lon1, lat2, lon2) => {
+  let radius = 6371; // Radius of the earth in km
+  let dLat = deg2rad(lat2 - lat1);
+  let dLon = deg2rad(lon2 - lon1);
+  let a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(lat1)) *
+      Math.cos(deg2rad(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  let d = radius * c; // Distance in km
+  return d;
 };
+
+// converting deg2rad
+function deg2rad(deg) {
+  return deg * (Math.PI / 180);
+}
