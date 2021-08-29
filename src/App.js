@@ -1,12 +1,10 @@
-import './App.css';
-import ShowChargingPoints from './components/ShowChargingPoints';
-
+import "./App.css";
+import ShowChargingPoints from "./components/ShowChargingPoints";
 
 function App() {
   return (
     <div className="App">
-      <ShowChargingPoints/>
-     
+      <ShowChargingPoints />
     </div>
   );
 }
