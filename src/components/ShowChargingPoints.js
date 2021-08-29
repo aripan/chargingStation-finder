@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
-import { getMyLocation, setData } from "./ImportantFunctions";
+import { getMyLocation } from './ImportantFunctions';
 import ScatterPoints from './ScatterPoints';
 
 const ShowChargingPoints = () => {
@@ -26,9 +26,9 @@ const ShowChargingPoints = () => {
 
             
 
-            fetch(URL).then(res=>res.json()).then(data=> setData(data, setChargingPoints))
+            // fetch(URL).then(res=>res.json()).then(data=> setData(data, setChargingPoints))
          }        
-    }, [currentLocation.latitude, currentLocation.longitude, distance])
+    }, [currentLocation.latitude, currentLocation.longitude, distance, connectionTypeId])
     
    
     // if(chargingPoints)
@@ -37,7 +37,7 @@ const ShowChargingPoints = () => {
       
     return (
         <div>
-            <Header distance={distance} setDistance={setDistance}/>
+            <Header setDistance={setDistance} connectionTypeId={connectionTypeId} setConnectionTypeId={setConnectionTypeId}/>
             <ScatterPoints />
         </div>
     )
