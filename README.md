@@ -24,34 +24,10 @@ The objective of this little product is to lookup charging stations that are in 
 - The application is based on a simple decision tree.
 - Depending on the choices of connector types and max distance from your location, a decision is made behind the scenes.
 
-## Directory Structure
+## Notes
 
-| .env.local
-| .gitignore
-| package-lock.json
-| package.json
-| README.md
-|
-+---public
-| favicon.ico
-| index.html
-| logo192.png
-| logo512.png
-| manifest.json
-| robots.txt
-|
-\---src
-| App.js
-| App.test.js
-| index.css
-| index.js
-| reportWebVitals.js
-| setupTests.js
-|
-\---components
-| Header.js
-| ImportantFunctions.js
-| PopupInfo.js
-| PopupInfo.module.css
-| ReactMap.js
-| Styles.module.css
+- Sometimes the server responds slow, so please be patient.
+
+- However, do check your browser console for any potential bad requests or errors.
+
+- Raise an issue in case you find any.
